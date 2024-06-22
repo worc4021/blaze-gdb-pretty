@@ -53,7 +53,7 @@ class BlazeVectorPrinter():
 
 
 def my_blaze_lookup(val : gdb.Value):
-    if str(val.type).startswith('blaze::'):
+    if str(val.type.strip_typedefs()).startswith('blaze::'):
         return BlazeVectorPrinter(val)
 
 class MyBlazeVectorPrintout(gdb.Command):
