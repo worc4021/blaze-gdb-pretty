@@ -1,0 +1,21 @@
+{
+    "name": "Blaze GDB",
+    "build": {
+        "dockerfile": "Dockerfile.debian",
+        "context": ".",
+        "args": {
+            "USERNAME": "vscode"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools-extension-pack",
+                "ms-python.python"
+            ]
+        }
+    },
+    "workspaceFolder": "/workspace",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    "remoteUser": "vscode"
+}

@@ -1,0 +1,11 @@
+FROM debian:stable-slim
+
+RUN apt update && apt install -y build-essential gcc g++ gfortran cmake git sudo tar curl zip unzip ninja-build pkg-config gdb python3-numpy
+
+ADD ./.gdbinit /etc/skel/.gdbinit
+
+ARG USERNAME=vscode
+
+RUN adduser --shell /bin/bash --disabled-password --gecos "" ${USERNAME} \
+    && echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USERNAME} \
+    && chmod 0440 /etc/sudoers.d/${USERNAME}
